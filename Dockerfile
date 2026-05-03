@@ -17,6 +17,9 @@ RUN --mount=type=ssh git clone git@github.com:anna-wojcik/pawcho-zadanie1.git .
 # ETAP 2: Ostateczny, lekki obraz docelowy
 FROM alpine:3.19
 
+# Dodanie małego pakietu z serwerem httpd
+RUN apk add --no-cache busybox-extras
+
 # Etykieta zgodna ze standardem OCI (informacja o autorze)
 LABEL org.opencontainers.image.authors="Anna Wójcik"
 

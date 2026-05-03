@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #Wygenerowanie logu o dacie, autorze i porcie serwera
-echo "[$(date -u + "%Y-%m-%dT%H:%M:%SZ")] Autor: Anna Wójcik, Serwer uruchomiony na porcie: 3000"
+echo "[$(date -u +"%Y-%m-%dT%H:%M:%SZ")] Autor: Anna Wójcik, Serwer uruchomiony na porcie: 3000"
 
 # Uruchomienie wbudowanego w Apline lekkiego serwera HTTP
 exec httpd -f -p 3000 -h /app
