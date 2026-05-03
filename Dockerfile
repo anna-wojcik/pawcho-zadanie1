@@ -17,6 +17,9 @@ RUN --mount=type=ssh git clone git@github.com:anna-wojcik/pawcho-zadanie1.git .
 # ETAP 2: Ostateczny, lekki obraz docelowy
 FROM alpine:3.19
 
+# Aktualizacja pakietów łatająca podatności (w tym CVE-2026-40200 dla musl)
+RUN apk upgrade --no-cache
+
 # Etykieta zgodna ze standardem OCI (informacja o autorze)
 LABEL org.opencontainers.image.authors="Anna Wójcik"
 
