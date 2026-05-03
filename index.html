@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja Pogodowa</title>
+    <style>body { font-family: monospace; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Sprawdź aktualną pogodę</h2>
+    <select id="location">
+      <option value="51.2465,22.5684">Polska, Lublin</option>
+      <option value="52.2297,21.0122">Polska, Warszawa</option>
+      <option value="48.8534,2.3488">Francja, Paryż</option>
+    </select>
+    <button onclick="getWeather()">Sprawdź</button>
+    <h3 id="result"></h3>
+
+    <script>
+        async function getWeather() {
+          const loc = document.getElementById('location').value;
+          const [lat, lon] = loc.split(',');
+          const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+          const data = await response.json();
+          document.getElementById('result').innerText = 
+            `Temperatura: ${data.current_weather.temperature} °C, Wiatr: ${data.current_weather.windspeed} km/h`;
+        }
+    </script>
+</body>
+</html>
