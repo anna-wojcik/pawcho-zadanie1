@@ -14,11 +14,8 @@ WORKDIR /build
 # Pobranie plików z repozytorium GitHub wykorzystując klucz SSH maszyny budującej
 RUN --mount=type=ssh git clone git@github.com:anna-wojcik/pawcho-zadanie1.git .
 
-# ETAP 2: Ostateczny, lekki obraz docelowy
-FROM alpine:3.19
-
-# Aktualizacja pakietów łatająca podatności (w tym CVE-2026-40200 dla musl)
-RUN apk upgrade --no-cache
+# ETAP 2: Ostateczny, lekki obraz docelowy (brak systemu operacyjnego, tylko rdzeń BusyBox)
+FROM busybox:1.36.1-musl
 
 # Etykieta zgodna ze standardem OCI (informacja o autorze)
 LABEL org.opencontainers.image.authors="Anna Wójcik"
